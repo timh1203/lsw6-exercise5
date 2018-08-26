@@ -14,10 +14,22 @@
 <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 
 <script type='text/babel'>
-  const Parent = props => {
+  const GrandChild = (props) => <h3>{props.personData.grandChildName}</h3>
+
+  const Child = (props) => {
     return (
       <div>
-        Parent: {props.personData.parentName}
+        <h2>Child: {props.personData.childName}</h2>
+        <GrandChild personData={props.personData} />
+      </div>
+    )
+  }
+
+  const Parent = (props) => {
+    return (
+      <div>
+        <h1>Parent: {props.personData.parentName}</h1>
+        <Child personData={props.personData} />
       </div>
     )
   }
